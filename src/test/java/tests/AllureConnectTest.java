@@ -1,14 +1,17 @@
 package tests;
 
-import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import pages.MainPage;
 
-public class AllureConnectTest {
+public class AllureConnectTest extends BaseTest {
+    private final MainPage mainPage = new MainPage();
 
-    @DisplayName("Allure regjhn connection")
+    @DisplayName("Allure connection")
     @Test
-    void connectAllureTest(){
-        Selenide.open("https://github.com/eroshenkoam/allure-example");
+    void connectAllureTest() {
+        mainPage.openPage()
+                .navigateToIssuesPage()
+                .checkTheIssueHasText("Another test issue");
     }
 }
